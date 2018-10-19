@@ -1,0 +1,3 @@
+{
+  "db": "mongodb://user-service-db/user-service-test"
+}

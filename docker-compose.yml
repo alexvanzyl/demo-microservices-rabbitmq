@@ -1,0 +1,29 @@
+version: "3.2"
+
+services:
+  rabbitmq:
+    image: rabbitmq:management
+    hostname: ms-rabbit
+    container_name: ms-rabbitmq
+    ports:
+      - '15672:15672'
+  
+
+  user-service-node:
+    build: ./user-service
+    container_name: ms-user-service
+    ports:
+      - "3000:3000"
+    depends_on:
+      - user-service-db
+    volumes:
+      - ./user-service:/usr/src/app
+    command: npm run dev
+  
+  user-service-db:
+    image: mongo
+    volumes:
+      - user-service-data:/data/db
+
+volumes:
+  user-service-data:

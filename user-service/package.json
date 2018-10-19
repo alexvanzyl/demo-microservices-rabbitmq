@@ -1,0 +1,35 @@
+{
+  "name": "user-service",
+  "version": "1.0.0",
+  "description": "User microservice",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon ./src/index.js",
+    "test": "jest --watchAll --verbose"
+  },
+  "author": "Alexander van Zyl",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^5.7.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-security": "^1.4.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "supertest": "^3.3.0"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.1",
+    "config": "^2.0.1",
+    "express": "^4.16.4",
+    "express-async-errors": "^3.1.1",
+    "helmet": "^3.14.0",
+    "joi": "^14.0.0",
+    "mongoose": "^5.3.4",
+    "winston": "^3.1.0"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  }
+}
