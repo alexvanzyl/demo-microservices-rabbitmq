@@ -8,7 +8,6 @@ services:
     ports:
       - '15672:15672'
   
-
   user-service-node:
     build: ./user-service
     container_name: ms-user-service

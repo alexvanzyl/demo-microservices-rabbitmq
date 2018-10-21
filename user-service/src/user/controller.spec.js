@@ -10,16 +10,36 @@ describe('/api/users', () => {
     await User.remove({});
   });
 
-  it('should return 400 if invalid user is registered', async () => {
-    const invalidUser = {
-      email: '',
-      password: '',
-    };
+  describe('POST /register', () => {
+    let testUser;
 
-    const res = await request(server)
+    const exec = async () => request(server)
       .post('/api/users/register')
-      .send(invalidUser);
+      .send(testUser);
 
-    expect(res.status).toBe(400);
+    beforeEach(() => {
+      testUser = {
+        email: 'john@doe.com',
+        password: 'somepassword',
+      };
+    });
+
+    it('should create a new user on successful registration', async () => {
+      const res = await exec();
+      const user = await User.find({ email: testUser.email });
+
+      expect(res.status).toBe(200);
+      expect(user).not.toBeNull();
+    });
+
+    it('should return 400 if invalid user is registered', async () => {
+      testUser = {
+        email: '',
+        password: '',
+      };
+      const res = await exec();
+
+      expect(res.status).toBe(400);
+    });
   });
 });
