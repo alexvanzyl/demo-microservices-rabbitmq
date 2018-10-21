@@ -1,11 +1,10 @@
 const request = require('supertest');
-const mongoose = require('mongoose');
 const { User } = require('../../src/user/model');
 
 let server;
 
 describe('/api/users', () => {
-  beforeEach(() => { server = require('../../src/index') })
+  beforeEach(() => { server = require('../../src/index') });
   afterEach(async () => {
     await server.close();
     await User.remove({});
