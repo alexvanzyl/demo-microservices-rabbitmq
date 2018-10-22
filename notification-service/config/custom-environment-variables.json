@@ -1,0 +1,8 @@
+{
+  "mailtrap": {
+    "host": "MAILTRAP_HOST",
+    "port": "MAILTRAP_PORT",
+    "user": "MAILTRAP_USER",
+    "pass": "MAILTRAP_PASS"
+  }
+}

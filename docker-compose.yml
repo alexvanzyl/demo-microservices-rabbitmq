@@ -21,8 +21,21 @@ services:
   
   user-service-db:
     image: mongo
+    container_name: ms-user-service-db
     volumes:
       - user-service-data:/data/db
+
+  notification-service-node:
+    build: ./notification-service
+    container_name: ms-notification-service
+    volumes:
+      - ./notification-service:/usr/src/app
+    environment:
+      - MAILTRAP_HOST=${MAILTRAP_HOST}
+      - MAILTRAP_PORT=${MAILTRAP_PORT}
+      - MAILTRAP_USER=${MAILTRAP_USER}
+      - MAILTRAP_PASS=${MAILTRAP_PASS}
+    command: npm run dev
 
 volumes:
   user-service-data:
